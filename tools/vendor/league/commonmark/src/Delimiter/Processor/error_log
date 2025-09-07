@@ -1,0 +1,12 @@
+[04-Sep-2025 20:02:17 UTC] PHP Fatal error:  Uncaught Error: Interface "League\CommonMark\Delimiter\Processor\DelimiterProcessorInterface" not found in /home/depossco/public_html/tools/vendor/league/commonmark/src/Delimiter/Processor/StaggeredDelimiterProcessor.php:31
+Stack trace:
+#0 {main}
+  thrown in /home/depossco/public_html/tools/vendor/league/commonmark/src/Delimiter/Processor/StaggeredDelimiterProcessor.php on line 31
+[05-Sep-2025 05:37:38 UTC] PHP Fatal error:  Uncaught Error: Interface "League\CommonMark\Delimiter\Processor\DelimiterProcessorCollectionInterface" not found in /home/depossco/public_html/tools/vendor/league/commonmark/src/Delimiter/Processor/DelimiterProcessorCollection.php:24
+Stack trace:
+#0 {main}
+  thrown in /home/depossco/public_html/tools/vendor/league/commonmark/src/Delimiter/Processor/DelimiterProcessorCollection.php on line 24
+[05-Sep-2025 07:24:29 UTC] PHP Fatal error:  Uncaught Error: Interface "League\CommonMark\Delimiter\Processor\DelimiterProcessorInterface" not found in /home/depossco/public_html/tools/vendor/league/commonmark/src/Delimiter/Processor/CacheableDelimiterProcessorInterface.php:25
+Stack trace:
+#0 {main}
+  thrown in /home/depossco/public_html/tools/vendor/league/commonmark/src/Delimiter/Processor/CacheableDelimiterProcessorInterface.php on line 25
