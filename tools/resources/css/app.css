@@ -216,12 +216,17 @@
   font-size: 0.875rem !important; 
 }
 
+.p-multiselect-panel .p-multiselect-header{
+    padding-left: .5rem !important;
+    padding-right: 1rem !important;
+}
 .p-multiselect-label,
 .p-multiselect-label.p-placeholder {
   font-family: 'Instrument Sans', sans-serif !important;
   font-size: 0.875rem !important;
   color: #6B7280;
 }
+
 
 /* Seimbangkan posisi teks di dalam MultiSelect */
 .p-multiselect-label {
@@ -235,10 +240,7 @@
 
 /* Tambahkan jarak antar item di dropdown MultiSelect */
 .p-multiselect-item {
-  padding-left: 1.25rem !important;
-  padding-right: 1rem !important;
-  padding-top: 0.1rem !important;
-  padding-bottom: 0.1rem !important;
+  padding: .1rem 1rem .1rem .5rem !important;
   min-height: 2.1rem !important;
   font-size: 0.875rem !important;
   font-family: 'Instrument Sans', sans-serif !important;
@@ -260,10 +262,9 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  border: 2px solid #64748b !important;   /* Tailwind slate-500 */
+  border: 1px solid #64748b !important;   /* Tailwind slate-500 */
   border-radius: 0.375rem !important;      /* Rounded agar konsisten */
   box-sizing: border-box;
-  background: #fff !important;
   transition: border-color 0.2s;
 }
 
@@ -271,6 +272,13 @@
 .p-checkbox-box.p-highlight {
   border-color: #2563eb !important;        /* Tailwind blue-600 */
   background: #eff6ff !important;          /* Tailwind blue-50 */
+}
+
+/* Warna icon centang saat checked */
+.p-checkbox-box.p-highlight .p-checkbox-icon {
+  color: #2563eb !important;
+  font-size: 1.25rem !important;
+  font-weight: bold;
 }
 
 .p-multiselect {
