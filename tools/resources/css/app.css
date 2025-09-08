@@ -212,22 +212,33 @@
 .p-multiselect-label {
   display: flex;
   align-items: center;
-  min-height: 2.5rem; /* 40px, sama seperti input lain */
-  padding-top: 2px;
-  padding-bottom: 2px;
+  min-height: 2.5rem !important;
+  padding-top: 0 !important;
+  padding-bottom: 0 !important;
+  line-height: 1.5 !important;
 }
 
 /* Tambahkan jarak antar item di dropdown MultiSelect */
 .p-multiselect-item {
-  padding-top: 0.5rem !important;
-  padding-bottom: 0.5rem !important;
-  min-height: 2rem;
+  padding-left: 1.25rem !important;
+  padding-right: 1rem !important;
+  padding-top: 0.65rem !important;
+  padding-bottom: 0.65rem !important;
+  min-height: 2.1rem !important;
+  font-size: 0.95rem !important;
+  font-family: 'Instrument Sans', sans-serif !important;
+  line-height: 1.5 !important;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem; /* Tambahkan gap antar checkbox dan teks */
 }
 
 .p-multiselect {
   border-radius: 0.375rem !important;
   font-family: 'Instrument Sans', sans-serif !important;
   font-size: 0.875rem !important;
+  display: flex;
+  align-items: center;
 }
 
 .p-multiselect-panel .p-multiselect-items {
@@ -244,15 +255,31 @@
 
 /* Menambahkan jarak antara teks dan tombol 'X' (close) pada item yang dipilih */
 .p-multiselect-token-icon {
-    margin-left: 0.25rem !important;
+  display: flex;
+  align-items: center;
+  margin-left: 0.25rem !important;
+  font-size: 1rem !important;
 }
 
 /* Menambahkan jarak antar item yang dipilih di dalam field */
 .p-multiselect-token {
-  margin-top: 2px;
-  margin-bottom: 2px;
-  min-height: 1.75rem;
   display: flex;
   align-items: center;
+  min-height: 1.75rem !important;   /* Lebih pendek dari sebelumnya */
+  font-size: 0.95rem !important;
+  font-family: 'Instrument Sans', sans-serif !important;
+  margin-top: 2px !important;
+  margin-bottom: 2px !important;
   margin-right: 0.25rem !important;
+  padding: 0 0.5rem !important;     /* Padding kiri-kanan lebih kecil */
+  border-radius: 0.375rem !important;
+  line-height: 1.5 !important;
+}
+
+.p-multiselect-item .p-checkbox {
+  margin-right: 0.5rem !important;
+}
+
+.p-multiselect-item .p-checkbox-box {
+  vertical-align: middle;
 }

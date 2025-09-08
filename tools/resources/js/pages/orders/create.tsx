@@ -540,7 +540,7 @@ export default function CreateOrderWithMultiTemp({ customers, shippers, order_id
                                             <div className="flex flex-wrap gap-4">
                                                 {/* Produk */}
                                                 <div className="min-w-[200px] flex-1">
-                                                    <Label>Produk #{idx + 1}</Label>
+                                                    <Label className="text-base font-bold">Produk #{idx + 1}</Label>
                                                     <Dropdown
                                                         value={item.product_id}
                                                         options={customerProducts.map((p) => ({
