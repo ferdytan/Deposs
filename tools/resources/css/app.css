@@ -171,6 +171,9 @@
   font-size: 0.875rem !important; 
 }
 
+.p-dropdown, .p-inputtext, .p-inputtext-lg {
+  border-radius: 0.375rem !important; /* ✅ Menyamakan dengan sudut standar Tailwind */
+}
 
 /* Opsi tambahan untuk menyamakan ukuran font jika perlu */
 .p-inputtext {
@@ -183,4 +186,73 @@
     transform: translateY(-50%);
     color: red;
     margin-right: 0.5rem; 
+}
+
+/* resources/css/app.css */
+/* Menargetkan daftar item di dalam dropdown */
+.p-dropdown-panel .p-dropdown-items {
+  font-family: 'Instrument Sans', sans-serif !important;
+  font-size: 0.875rem !important; 
+}
+
+/* Menargetkan teks input pencarian di dalam dropdown */
+.p-dropdown-panel .p-inputtext {
+  font-family: 'Instrument Sans', sans-serif !important;
+  font-size: 0.875rem !important; 
+}
+
+.p-multiselect-label,
+.p-multiselect-label.p-placeholder {
+  font-family: 'Instrument Sans', sans-serif !important;
+  font-size: 0.875rem !important;
+  color: #6B7280;
+}
+
+/* Seimbangkan posisi teks di dalam MultiSelect */
+.p-multiselect-label {
+  display: flex;
+  align-items: center;
+  min-height: 2.5rem; /* 40px, sama seperti input lain */
+  padding-top: 2px;
+  padding-bottom: 2px;
+}
+
+/* Tambahkan jarak antar item di dropdown MultiSelect */
+.p-multiselect-item {
+  padding-top: 0.5rem !important;
+  padding-bottom: 0.5rem !important;
+  min-height: 2rem;
+}
+
+.p-multiselect {
+  border-radius: 0.375rem !important;
+  font-family: 'Instrument Sans', sans-serif !important;
+  font-size: 0.875rem !important;
+}
+
+.p-multiselect-panel .p-multiselect-items {
+  font-family: 'Instrument Sans', sans-serif !important;
+  font-size: 0.875rem !important;
+}
+
+.p-multiselect-panel .p-inputtext {
+  font-family: 'Instrument Sans', sans-serif !important;
+  font-size: 0.875rem !important;
+}
+
+/* resources/css/app.css */
+
+/* Menambahkan jarak antara teks dan tombol 'X' (close) pada item yang dipilih */
+.p-multiselect-token-icon {
+    margin-left: 0.25rem !important;
+}
+
+/* Menambahkan jarak antar item yang dipilih di dalam field */
+.p-multiselect-token {
+  margin-top: 2px;
+  margin-bottom: 2px;
+  min-height: 1.75rem;
+  display: flex;
+  align-items: center;
+  margin-right: 0.25rem !important;
 }

@@ -10,6 +10,7 @@ import { Head, useForm } from '@inertiajs/react';
 import axios from 'axios';
 import { PlusCircle, Trash2, X } from 'lucide-react';
 import { Dropdown } from 'primereact/dropdown';
+import { MultiSelect } from 'primereact/multiselect';
 import { useEffect, useState } from 'react';
 
 // =====================
@@ -469,7 +470,7 @@ export default function CreateOrderWithMultiTemp({ customers, shippers, order_id
                                     filterPlaceholder="Cari customer..."
                                     showClear={false}
                                     onChange={(e) => setData('customer_id', e.value)}
-                                    className="w-full rounded-md border border-gray-200 h-10 px-3 py-2"
+                                    className="w-full rounded-md border border-gray-300 h-10 px-3 py-2"
                                 />
                                 {errors.customer_id && <p className="mt-1 text-sm text-red-500">{errors.customer_id}</p>}
                             </div>
@@ -490,7 +491,7 @@ export default function CreateOrderWithMultiTemp({ customers, shippers, order_id
                                     filterPlaceholder="Cari shipper..."
                                     showClear={true}
                                     onChange={(e) => setData('shipper_id', e.value)}
-                                    className="w-full rounded-md border border-gray-200 h-10 px-3 py-2"
+                                    className="w-full rounded-md border border-gray-300 h-10 px-3 py-2"
                                 />
                                 {errors.shipper_id && <p className="mt-1 text-sm text-red-500">{errors.shipper_id}</p>}
                             </div>
@@ -557,7 +558,7 @@ export default function CreateOrderWithMultiTemp({ customers, shippers, order_id
                                                             updateOrderItem(idx, 'price_type', undefined);
                                                         }}
                                                         disabled={!data.customer_id || productsLoading}
-                                                        className="w-full rounded-md border border-gray-200 h-10 px-3 py-2"
+                                                        className="w-full rounded-md border border-gray-300 h-10 px-3 py-2"
                                                     />
                                                 </div>
                                                 {/* Harga */}
@@ -586,59 +587,50 @@ export default function CreateOrderWithMultiTemp({ customers, shippers, order_id
                                                 {/* Additional Product Multi‑Select */}
                                                 <div className="min-w-[200px] flex-1">
                                                     <Label>Additional Produk</Label>
-                                                    <div className="max-h-32 min-h-10 overflow-y-auto rounded border px-2 py-1">
-                                                        {customerProducts.map((p) => (
-                                                            <div key={p.id} className="flex items-center gap-2">
-                                                                <input
-                                                                    type="checkbox"
-                                                                    checked={item.additional_product_ids?.includes(p.id.toString())}
-                                                                    onChange={(e) => {
-                                                                        const checked = e.target.checked;
-                                                                        const val = p.id.toString();
-                                                                        let next = item.additional_product_ids?.slice() || [];
+                                                    <MultiSelect
+                                                        value={item.additional_product_ids || []}
+                                                        options={customerProducts.map((p) => ({
+                                                            label: p.service_type,
+                                                            value: p.id.toString(),
+                                                            disabled: p.id.toString() === item.product_id, // disable jika sama dengan produk utama
+                                                        }))}
+                                                        onChange={(e) => {
+                                                            const next = e.value;
+                                                            updateOrderItem(idx, 'additional_product_ids', next);
 
-                                                                        if (checked) {
-                                                                            if (!next.includes(val)) next.push(val);
-                                                                        } else {
-                                                                            next = next.filter((v) => v !== val);
-                                                                        }
-
-                                                                        updateOrderItem(idx, 'additional_product_ids', next);
-
-                                                                        // Generate harga tambahan
-                                                                        const additionalPrices = getAdditionalProductPrices(next, item.price_type);
-                                                                        updateOrderItem(idx, 'additional_product_prices', additionalPrices);
-                                                                    }}
-                                                                    disabled={
-                                                                        productsLoading || !data.customer_id || p.id.toString() === item.product_id // ⬅️ disable kalau sama dengan produk utama
-                                                                    }
-                                                                />
-                                                                <label>{p.service_type}</label>
-                                                            </div>
-                                                        ))}
-                                                    </div>
+                                                            // Generate harga tambahan
+                                                            const additionalPrices = getAdditionalProductPrices(next, item.price_type);
+                                                            updateOrderItem(idx, 'additional_product_prices', additionalPrices);
+                                                        }}
+                                                        optionLabel="label"
+                                                        optionValue="value"
+                                                        placeholder="Pilih produk tambahan"
+                                                        disabled={productsLoading || !data.customer_id}
+                                                        display="chip"
+                                                        className="w-full rounded-md border border-gray-300 h-10 px-2 py-1"
+                                                    />
                                                 </div>
                                                 {/* Container */}
-                                                <div className="min-w-[200px] flex-1">
+                                                <div className="flex-1">
                                                     <Label>Nomor Kontainer</Label>
-                                                    <Input
-                                                        value={item.container_number}
-                                                        onChange={(e) => updateOrderItem(idx, 'container_number', e.target.value.toUpperCase())}
-                                                        placeholder="EMCU1234567"
-                                                        maxLength={11}
-                                                    />
+                                                    <div className="flex w-full gap-2">
+                                                        <Input
+                                                            className="flex-1"
+                                                            value={item.container_number}
+                                                            onChange={(e) => updateOrderItem(idx, 'container_number', e.target.value.toUpperCase())}
+                                                            placeholder="EMCU1234567"
+                                                            maxLength={11}
+                                                        />
+                                                        {requiresTemp && (
+                                                            <Button type="button" variant="outline" onClick={() => openTempModal(idx)}>
+                                                                Rekam Suhu
+                                                            </Button>
+                                                        )}
+                                                    </div>
                                                     {hasDuplicateContainer(idx) && (
                                                         <p className="text-sm text-red-500">Nomor kontainer sudah dipakai</p>
                                                     )}
                                                 </div>
-                                                {/* Rekam Suhu */}
-                                                {requiresTemp && (
-                                                    <div className="flex items-end">
-                                                        <Button type="button" variant="outline" onClick={() => openTempModal(idx)}>
-                                                            Rekam Suhu
-                                                        </Button>
-                                                    </div>
-                                                )}
                                             </div>
 
                                             {/* Date, Entry, EIR, Exit, Commodity, Country */}
@@ -657,6 +649,14 @@ export default function CreateOrderWithMultiTemp({ customers, shippers, order_id
                                                         value={item.vessel || ''}
                                                         onChange={(e) => updateOrderItem(idx, 'vessel', e.target.value)}
                                                         placeholder="Nama Kapal"
+                                                    />
+                                                </div>
+                                                <div>
+                                                    <Label>Komoditi</Label>
+                                                    <Input
+                                                        value={item.commodity}
+                                                        onChange={(e) => updateOrderItem(idx, 'commodity', e.target.value)}
+                                                        placeholder="Contoh: Barang Elektronik"
                                                     />
                                                 </div>
                                                 <div>
@@ -683,14 +683,7 @@ export default function CreateOrderWithMultiTemp({ customers, shippers, order_id
                                                         onChange={(e) => updateOrderItem(idx, 'exit_date', e.target.value)}
                                                     />
                                                 </div>
-                                                <div>
-                                                    <Label>Komoditi</Label>
-                                                    <Input
-                                                        value={item.commodity}
-                                                        onChange={(e) => updateOrderItem(idx, 'commodity', e.target.value)}
-                                                        placeholder="Contoh: Barang Elektronik"
-                                                    />
-                                                </div>
+                                                
                                             </div>
                                             {/* Remove Item */}
                                             {data.order_items.length > 1 && (
