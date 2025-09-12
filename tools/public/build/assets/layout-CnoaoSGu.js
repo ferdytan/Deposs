@@ -1,1 +1,0 @@
-import{j as e}from"./app-BbZmP5JP.js";function a({children:s}){return typeof window>"u"?null:e.jsx("div",{className:"px-4 py-6",children:e.jsx("div",{className:"flex flex-col space-y-8 lg:flex-row lg:space-y-0 lg:space-x-12",children:e.jsx("div",{className:"flex-1 md:max-w-2xl",children:e.jsx("section",{className:"max-w-xl space-y-12",children:s})})})})}export{a as S};

@@ -227,7 +227,6 @@
   color: #6B7280;
 }
 
-
 /* Seimbangkan posisi teks di dalam MultiSelect */
 .p-multiselect-label {
   display: flex;
@@ -330,4 +329,34 @@
 
 .p-multiselect-item .p-checkbox-box {
   vertical-align: middle;
+}
+
+.p-dropdown-panel .p-dropdown-filter-container,
+.p-multiselect-panel .p-multiselect-filter-container {
+  display: flex;
+  align-items: center;
+  padding: 0.5rem 1rem 0.25rem 1rem;
+  gap: 0.5rem;
+}
+
+.p-dropdown-panel .p-inputtext,
+.p-multiselect-panel .p-inputtext {
+  flex: 1 1 0%;
+  height: 2.25rem !important;
+  font-size: 0.95rem !important;
+  border-radius: 0.375rem !important;
+  padding-left: 0.75rem !important;
+  padding-right: 2rem !important; /* ruang untuk icon */
+  box-sizing: border-box;
+}
+
+.p-dropdown-panel .p-dropdown-filter-icon,
+.p-multiselect-panel .p-multiselect-filter-icon {
+  position: absolute;
+  right: 1.5rem;
+  top: 50%;
+  transform: translateY(-50%);
+  font-size: 1.25rem !important;
+  color: #64748b !important;
+  pointer-events: none;
 }

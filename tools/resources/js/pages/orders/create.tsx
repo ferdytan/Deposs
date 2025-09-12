@@ -383,6 +383,14 @@ export default function CreateOrderWithMultiTemp({ customers, shippers, order_id
     // ==================================
     //  Render
     // ==================================
+
+    const handleDropdownShow = () => {
+    setTimeout(() => {
+        const input = document.querySelector('.p-dropdown-panel .p-inputtext');
+        if (input) input.focus();
+    }, 100);
+    };
+
     return (
         <AppLayout>
             <Head title="Buat Order Baru" />
@@ -470,6 +478,7 @@ export default function CreateOrderWithMultiTemp({ customers, shippers, order_id
                                     filterPlaceholder="Cari customer..."
                                     showClear={false}
                                     onChange={(e) => setData('customer_id', e.value)}
+                                    onShow={handleDropdownShow} // ⬅️ Tambahkan ini
                                     className="w-full rounded-md border border-gray-300 h-10 px-3 py-2"
                                 />
                                 {errors.customer_id && <p className="mt-1 text-sm text-red-500">{errors.customer_id}</p>}
@@ -491,6 +500,7 @@ export default function CreateOrderWithMultiTemp({ customers, shippers, order_id
                                     filterPlaceholder="Cari shipper..."
                                     showClear={true}
                                     onChange={(e) => setData('shipper_id', e.value)}
+                                    onShow={handleDropdownShow} // ⬅️ Tambahkan ini
                                     className="w-full rounded-md border border-gray-300 h-10 px-3 py-2"
                                 />
                                 {errors.shipper_id && <p className="mt-1 text-sm text-red-500">{errors.shipper_id}</p>}
